@@ -19,8 +19,9 @@ using Assassin;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Collections.Generic;
 
-namespace Assassin.Data
+namespace Assassin.Data.TSql
 {
 	public class ConnectionPool : Base, IDatabaseConnection
 	{
@@ -158,6 +159,29 @@ namespace Assassin.Data
 			adapter.Dispose();
 			adapter = null;
 
+			con.Close();
+			con.Dispose();
+			con = null;
+
+			return retval;
+		}
+		public SqlParameter[] ExecuteStoredProcedure(SqlCommand command)
+		{
+			SqlParameter[] retval = null;
+
+			SqlConnection con = new SqlConnection(this.Configuration.ConnectionString);
+			con.Open();
+			this.m_status = ConnectionStatus.Open;
+
+			//prepare command
+			command.Connection = con;
+			command.CommandType = CommandType.StoredProcedure;
+
+			//execute
+			command.ExecuteReader();
+			command.Parameters.CopyTo(retval, 0);
+
+			//dispose
 			con.Close();
 			con.Dispose();
 			con = null;

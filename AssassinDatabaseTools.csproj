@@ -46,12 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConnectionPool.cs" />
+    <Compile Include="TSql\ConnectionPool.cs" />
     <Compile Include="ConnectionCollection.cs" />
     <Compile Include="ConnectionConfiguration.cs" />
     <Compile Include="TSql\InsertQueryBuilder.cs" />
     <Compile Include="TSql\SelectQueryBuilder.cs" />
-    <Compile Include="TSql\StoredProcedureQueryBuilder.cs" />
+    <Compile Include="TSql\StoredProcedure.cs" />
     <Compile Include="TSql\UpdateQueryBuilder.cs" />
     <Compile Include="_namespace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

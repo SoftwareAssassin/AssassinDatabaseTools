@@ -17,6 +17,7 @@
 using System;
 using Assassin;
 using System.Collections.Generic;
+using Assassin.Data.TSql;
 
 namespace Assassin.Data
 {
